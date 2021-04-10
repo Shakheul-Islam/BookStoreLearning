@@ -1,0 +1,45 @@
+﻿
+@{ string curd = @ViewBag.PageUrl;}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Book List</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-20px"><a class="redirect-btn mb-1" data-url="/@ViewBag.PageUrl/New" href="###">Add Book</a></div>
+            </div>
+            <div class="panel-body">
+
+                <div class="filter-box mb-1">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 item">
+                            <div class="input-group">
+                                <input type="text" class="form-control filter-item" name="searchBy" placeholder="Name/Code">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="content-box common-list" id="content-box">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_ModalDelete")
+
+@section scripts{
+    <script src="~/Scripts/App/MultiPageCurd.js"></script>
+    <script>
+        SetCurdUrl("/@ViewBag.PageUrl/list");
+        //first call
+        LoadList();
+    </script>
+
+}

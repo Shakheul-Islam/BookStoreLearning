@@ -1,0 +1,58 @@
+﻿@model BOOKSTORE.INFRASTRUCTURE.Services.BookServices.ViewModel.BookVM
+@{
+    ViewBag.Title = "NewOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string curd = @ViewBag.PageUrl;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title">Add Book</div>
+        <div style="float:right; font-size: 85%; position: relative; top:-20px"><a class="redirect-btn mb-1" data-url="/@ViewBag.PageUrl/Index" href="###">Book List</a></div>
+    </div>
+    <div class="panel-body">
+        <form method="post" action="" class="form-horizontal view-form" id="ajax-loaded-from" role="form">
+        
+                <input type="hidden" value="@Model.Id" id="Id" name="Id" class="input-item" />
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row pr-5">
+
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control input-item", placeholder = "Book Name", autocomplete = "off", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Name)
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group row pr-5">
+
+                                @Html.TextBoxFor(model => model.Code, new { @class = "form-control input-item", placeholder = "Code Number", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Code)
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btn-danger redirect-btn" id="back-btn" data-url="/@curd/index"><span><i class="fa fa-chevron-left"></i></span>Cancel</button>
+
+                        <button type="submit" class="btn btn-success ladda-button save-btn" id="save-btn" data-curd="view" data-url="/@curd/Save" data-style="slide-left">
+                            <i class="fa fa-check-square-o"></i> Save
+                        </button>
+
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/App/MultiPageCurd.js"></script>
+    <script>
+        function initAfterSave() {
+
+        }
+    </script>
+
+}

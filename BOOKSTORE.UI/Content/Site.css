@@ -1,0 +1,13 @@
+﻿.float-right {
+float:right;
+}
+
+.mb-1{
+    margin-bottom:10px;
+}
+.content-body{
+    padding:10px 10px;
+}
+.pr-5{
+    padding-right:5px;
+}
